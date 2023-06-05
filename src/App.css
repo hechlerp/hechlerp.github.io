@@ -35,6 +35,11 @@
 
 .card {
   padding: 2em;
+  background: #fff;
+}
+
+.full-height {
+    flex-grow: 1;
 }
 
 .read-the-docs {

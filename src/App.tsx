@@ -1,37 +1,37 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { useNavigate, Outlet } from "react-router-dom";
 import './App.css';
+import { routes } from './routes';
 
-const ROUTES_TO_PAGE_NAMES: Record<string, string> = {
-    games: "Games",
-    contact: "Contact"
-} as const;
 
 function App() {
-    const [count, setCount] = useState(0);
+
+    const navigate = useNavigate();
+
     const handleNav = useCallback((routeName: string) => {
-        console.log(routeName);
+        navigate(routeName);
     }, []);
     const pageLinks = useMemo(() => {
-        return Object.keys(ROUTES_TO_PAGE_NAMES).map(route => {
+        return routes.map(({ displayName, route }) => {
             return (
                 <Button
                     key={route}
                     onClick={() => handleNav(route)}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                    {ROUTES_TO_PAGE_NAMES[route] ?? ""}
+                    {displayName ?? ""}
                 </Button>
             )
         });
     }, [handleNav]);
     return (
-        <>
+        <Box sx={{ display: "flex", flexDirection: "column", height: "100%"}}>
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
@@ -61,22 +61,14 @@ function App() {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <div>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                  Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
+            <div className="card full-height">
+                <Outlet />
             </div>
             <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
+                here's where the socials go
             </p>
-        </>
-  )
+        </Box>
+    )
 }
 
 export default App

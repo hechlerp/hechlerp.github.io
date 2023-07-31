@@ -1,6 +1,6 @@
 ﻿import { Box, Container, Typography } from "@mui/material";
 import React from "react";
-import ProjectileTile from "../Components/ProjectileTile";
+import ProjectTile from "../Components/ProjectTile";
 
 function Games() {
     return (
@@ -10,9 +10,9 @@ function Games() {
                     Games
                 </Typography>
                 <Box sx={{marginTop: "20px"}}>
-                    <ProjectileTile
+                    <ProjectTile
                         title="Planar Peril"
-                        thumbnailSrc="https://i.imgur.com/QngmlmA.png"
+                        thumbnailSrc="https://i.imgur.com/93sqcAV.png"
                         description="An in-progress RTS made with Unity/C#. In the current build, there are two playable scenarios: the tutorial and the wave defense mode.
 
                             Gather resources, build a base, and fight off the increasingly dangerous waves of enemies in this war of alternate versions of Earth.
@@ -22,12 +22,12 @@ function Games() {
                             Most assets currently in the game are placeholders.
                             "
                         links={[
-                            { label: 'Live Demo', url: 'http://hechlerp.github.io/ShroudedCity/', note: "This will download the built version"}
+                            { label: 'Live Demo (on Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo'}
                         ]}
                         />
                 </Box>
                 <Box sx={{marginTop: "20px"}}>
-                    <ProjectileTile
+                    <ProjectTile
                         title="Shrouded City"
                         thumbnailSrc="https://i.imgur.com/QngmlmA.png"
                         description="A 2D dungeon crawler built with Pixi.js. Navigate the rooms of the occult and reach the cliffs at the end."
@@ -38,7 +38,7 @@ function Games() {
                         />
                 </Box>
                 <Box sx={{marginTop: "20px"}}>
-                    <ProjectileTile
+                    <ProjectTile
                         title="The Necrofixer"
                         thumbnailSrc="https://img.itch.zone/aW1hZ2UvNTYxNjA1LzI5NTE4MzIuanBn/original/D0suYE.jpg"
                         description="Created with a team for the Global Game Jam 2020
@@ -59,7 +59,7 @@ function Games() {
                         />
                 </Box>
                 <Box sx={{ marginTop: "20px" }}>
-                    <ProjectileTile
+                    <ProjectTile
                         title="Belong"
                         thumbnailSrc="https://ggj.s3.amazonaws.com/styles/game_sidebar__wide/game/featured_image/screenshot_2018-01-28_21.40.05.png?itok=Ys2wi2iW&timestamp=1517236977"
                         description="A Global Game Jam game built with Unity. Built in 48 hours with a few strangers. Eat seeds and poop trees to traverse planets and reach your flock. The Chinese word in the logo, 歸途 (guī tu) means: the way back, one's journey home."

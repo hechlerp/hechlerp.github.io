@@ -12,7 +12,7 @@ type Props = {
     }[];
 };
 
-function ProjectileTile({ title, description, thumbnailSrc, links }: Props) {
+function ProjectTile({ title, description, thumbnailSrc, links }: Props) {
 
     const renderableLinks = links.map((link, index) => {
         const { label, url, note = ""} = link;
@@ -48,4 +48,4 @@ function ProjectileTile({ title, description, thumbnailSrc, links }: Props) {
     )
 }
 
-export default ProjectileTile;
+export default ProjectTile;

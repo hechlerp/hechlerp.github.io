@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import React from "react";
 import SocialButton, { SocialButtonProps } from "../Components/SocialButton";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';

@@ -1,4 +1,3 @@
-import React from "react";
 import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Games from "../Pages/Games";

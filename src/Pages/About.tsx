@@ -1,6 +1,14 @@
 import { Box, Container, Link, Typography } from "@mui/material";
+import { SyntheticEvent, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 function About() {
+
+    const navigate = useNavigate();
+    const handleLinkNav = useCallback((e: SyntheticEvent) => {
+        e.preventDefault();
+        navigate("/games");
+    }, [navigate]);
     return (
         <Container>
             <Typography sx={{ textAlign: "left", marginBottom: "20px" }} variant="h4">
@@ -18,7 +26,7 @@ function About() {
                     <br />
                     <br />
 
-                    You can find the games I've made here on my site, on the <Link href="/games">Games page</Link>. They include my personal projects and a few choice games I worked on as part of game jams.
+                    You can find the games I've made here on my site, on the <Link href="/games" onClick={handleLinkNav}>Games page</Link>. They include my personal projects and a few choice games I worked on as part of game jams.
                     <br />
                     <br />
                     If you have any other questions or want to get in contact, feel free to reach out to me at

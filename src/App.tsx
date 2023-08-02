@@ -66,6 +66,13 @@ function App() {
 
     const iconAnchor = useRef<HTMLButtonElement>(null);
     if (location.pathname === appBase) {
+        if (location.search !== "") {
+            const targetedRoute = location.search.split("/")[1];
+            const foundRoute = routes.find(route => targetedRoute.includes(route.route));
+            if (foundRoute) {
+                return <Navigate to={foundRoute.route} replace={true} />
+            }
+        }
         return <Navigate to={defaultPage} replace={true} />
     }
     return (

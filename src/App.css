@@ -102,3 +102,9 @@
 .across-from-pic {
     flex-grow: 1;
 }
+
+.project-tile-divider-line {
+    border-bottom: 2px solid var(--divider);
+    margin: 22px auto 0 auto;
+    width: 80%;
+}

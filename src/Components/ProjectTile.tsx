@@ -1,6 +1,6 @@
 import { Box, Button, Link, Typography } from "@mui/material";
 
-type Props = {
+export type TileProps = {
     title: string;
     description: string;
     thumbnailSrc: string;
@@ -11,7 +11,7 @@ type Props = {
     }[];
 };
 
-function ProjectTile({ title, description, thumbnailSrc, links }: Props) {
+function ProjectTile({ title, description, thumbnailSrc, links }: TileProps) {
 
     const renderableLinks = links.map((link, index) => {
         const { label, url, note = ""} = link;

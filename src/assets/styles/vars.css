@@ -6,6 +6,7 @@
     --link-hover: #747bff;
     --button-link-hover: #747bff;
     --button-background: #f9f9f9;
+    --divider: #262626;
 }
 
 [data-theme='dark'] {
@@ -15,4 +16,5 @@
     --link-hover: #535bf2;
     --button-link-hover: #b5a5ff;
     --button-background: #1a1a1a;
+    --divider: #e5e5e5;
 }

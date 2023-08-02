@@ -1,3 +1,5 @@
+@import url('./assets/styles/vars.css');
+
 #root {
   width: 100%
 }
@@ -37,16 +39,24 @@
 
 .card {
     padding: 2em;
-    background: #e5e5e5;
+    background: var(--content-background);
+    color: var(--color);
+    /*background: #e5e5e5;*/
 }
 
 .full-height {
     flex-grow: 1;
 }
 
+.button-link:hover {
+    color: var(--button-link-hover);
+}
+
 .socials-container {
-    color: #888;
-    background: #e5e5e5;
+    /*color: #888;*/
+    /*background: #e5e5e5;*/
+    background: var(--content-background);
+    color: var(--color);
     margin-top: 0;
     padding: 10px;
     display: block;

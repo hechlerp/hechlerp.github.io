@@ -1,0 +1,18 @@
+
+:root {
+    --background: #242424;
+    --content-background: #e5e5e5;
+    --color: #171718;
+    --link-hover: #747bff;
+    --button-link-hover: #747bff;
+    --button-background: #f9f9f9;
+}
+
+[data-theme='dark'] {
+    --background: #242424;
+    --content-background: #262626;
+    --color: rgba(255, 255, 255, 0.87);
+    --link-hover: #535bf2;
+    --button-link-hover: #b5a5ff;
+    --button-background: #1a1a1a;
+}

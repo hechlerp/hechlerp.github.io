@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
-import { IconButton, MenuItem } from '@mui/material';
+import { SyntheticEvent, useCallback, useMemo, useRef, useState } from 'react';
+import { FormControlLabel, IconButton, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,18 +7,46 @@ import Container from '@mui/material/Container';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import { Switch } from '@mui/material';
+import { styled } from "@mui/material/styles";
 import { useNavigate, Outlet, useLocation, Navigate } from "react-router-dom";
 import './App.css';
 import { routes } from './Routing/routes';
-import Menu from "@mui/material/Menu";
 import Socials from './Sections/Socials';
+
+const DarkModeSwitch = styled(Switch)(() => ({
+    "& .MuiSwitch-switchBase.Mui-checked": {
+        color: "#171718"
+    },
+    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+        backgroundColor: "#171718"
+    }
+}))
 
 
 const appBase = "/";
 const defaultPage = "/about";
 
+function setInitialDarkModeState() {
+    const localStorageColorScheme = localStorage.getItem("colorScheme");
+    if (localStorageColorScheme) {
+        return localStorageColorScheme === "true";
+    } else {
+        // failing a stored scheme, check the window defaults.
+        if (window.matchMedia) {
+            if (window.matchMedia("prefers-color-scheme: light").matches) {
+                return false;
+            } else if (window.matchMedia("prefers-color-scheme: dark").matches) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 function App() {
-    
+
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -61,7 +89,7 @@ function App() {
                 </MenuItem>
             );
         })
-        return { pageLinks: links, routeMenuItems};
+        return { pageLinks: links, routeMenuItems };
     }, [handleNav]);
 
     const iconAnchor = useRef<HTMLButtonElement>(null);
@@ -75,8 +103,30 @@ function App() {
         }
         return <Navigate to={defaultPage} replace={true} />
     }
+
+    const [shouldUseDarkTheme, setColorScheme] = useState<boolean>(setInitialDarkModeState);
+    
+    const toggleColorScheme = useCallback(() => {
+        localStorage.setItem("colorScheme", "" + !shouldUseDarkTheme);
+        setColorScheme(!shouldUseDarkTheme);
+    }, [shouldUseDarkTheme, setColorScheme]);
+    const colorSchemeController = (
+        <Box sx={{minWidth: "150px", display: "flex"}}>
+            <FormControlLabel sx={{ margin: "auto" }} control={
+                <DarkModeSwitch checked={shouldUseDarkTheme} onChange={toggleColorScheme} />
+            } label={shouldUseDarkTheme ? "Dark Mode" : "Light Mode"} />
+        </Box>
+    );
+
+    const onMenuToggleColorScheme = useCallback((e: SyntheticEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.setItem("colorScheme", "" + !shouldUseDarkTheme);
+        setColorScheme(!shouldUseDarkTheme);
+    }, [shouldUseDarkTheme, setColorScheme]);
+
     return (
-        <Box className="site-root" sx={{ width: { xs: "100%", md: "80vw" }, margin: "0 auto" }}>
+        <Box data-theme={shouldUseDarkTheme ? "dark" : "light"} className="site-root" sx={{ width: { xs: "100%", md: "80vw" }, margin: "0 auto", colorScheme: shouldUseDarkTheme ? "dark" : "light" }}>
             <Box sx={{ display: "flex", flexDirection: "column", height: "100%", width: "100%"}}>
                 <AppBar position="static">
                     <Container maxWidth="xl">
@@ -102,6 +152,7 @@ function App() {
                             </Box>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "flex-end" }}>
                                 {pageLinks}
+                                {colorSchemeController}
                             </Box>
                             <Box sx={{ display: { xs: "flex", md: "none" } }}>
                                 <IconButton onClick={openNavMenu} ref={iconAnchor}>
@@ -113,6 +164,10 @@ function App() {
                                     onClose={closeNavMenu}
                                 >
                                     {routeMenuItems}
+                                    <MenuItem value="controller" onClick={onMenuToggleColorScheme}>
+                                        {colorSchemeController}
+                                    </MenuItem>
+
                                 </Menu>
                             </Box>
                         </Toolbar>

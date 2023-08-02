@@ -17,7 +17,7 @@ function ProjectTile({ title, description, thumbnailSrc, links }: Props) {
         const { label, url, note = ""} = link;
         return (
             <Box sx={{ margin: "0 10px" }} key={index + "-" + label}>
-                <Button variant="contained" component={Link} href={url} target={"_blank"} sx={{width: "130px"}}>
+                <Button variant="contained" className="button-link" component={Link} href={url} target={"_blank"} sx={{width: "130px"}}>
                     {label}
                 </Button>
                 {note ? (

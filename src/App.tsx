@@ -137,7 +137,7 @@ function App() {
                                     variant="h6"
                                     noWrap
                                     component="a"
-                                    href="/about"
+                                    href="/"
                                     sx={{
                                         mr: 2,
                                         display: "flex",

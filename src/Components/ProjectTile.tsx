@@ -16,7 +16,7 @@ function ProjectTile({ title, description, thumbnailSrc, links }: Props) {
     const renderableLinks = links.map((link, index) => {
         const { label, url, note = ""} = link;
         return (
-            <Box sx={{ margin: "0 10px" }} key={index + "-" + label}>
+            <Box sx={{ margin: "0 10px", lineHeight: "3em" }} key={index + "-" + label}>
                 <Button variant="contained" className="button-link" component={Link} href={url} target={"_blank"} sx={{width: "130px"}}>
                     {label}
                 </Button>
@@ -40,7 +40,7 @@ function ProjectTile({ title, description, thumbnailSrc, links }: Props) {
             <Typography sx={{marginTop: "20px", textAlign: "left", whiteSpace: "pre-line"}} variant="body2">
                 {description}
             </Typography>
-            <Box sx={{display: "flex", margin: "20px auto 0 auto"}}>
+            <Box sx={{display: "flex", margin: "20px auto 0 auto", flexWrap: "wrap"}}>
                 {renderableLinks}
             </Box>
         </Box>

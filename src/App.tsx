@@ -93,16 +93,6 @@ function App() {
     }, [handleNav]);
 
     const iconAnchor = useRef<HTMLButtonElement>(null);
-    if (location.pathname === appBase) {
-        if (location.search !== "") {
-            const targetedRoute = location.search.split("/")[1];
-            const foundRoute = routes.find(route => targetedRoute.includes(route.route));
-            if (foundRoute) {
-                return <Navigate to={foundRoute.route} replace={true} />
-            }
-        }
-        return <Navigate to={defaultPage} replace={true} />
-    }
 
     const [shouldUseDarkTheme, setColorScheme] = useState<boolean>(setInitialDarkModeState);
     
@@ -124,6 +114,17 @@ function App() {
         localStorage.setItem("colorScheme", "" + !shouldUseDarkTheme);
         setColorScheme(!shouldUseDarkTheme);
     }, [shouldUseDarkTheme, setColorScheme]);
+
+    if (location.pathname === appBase) {
+        if (location.search !== "") {
+            const targetedRoute = location.search.split("/")[1];
+            const foundRoute = routes.find(route => targetedRoute.includes(route.route));
+            if (foundRoute) {
+                return <Navigate to={foundRoute.route} replace={true} />
+            }
+        }
+        return <Navigate to={defaultPage} replace={true} />
+    }
 
     return (
         <Box data-theme={shouldUseDarkTheme ? "dark" : "light"} className="site-root" sx={{ width: { xs: "100%", md: "80vw" }, margin: "0 auto", colorScheme: shouldUseDarkTheme ? "dark" : "light" }}>

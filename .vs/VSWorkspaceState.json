@@ -1,8 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\assets",
+    "\\src\\assets\\styles",
+    "\\src\\Components",
+    "\\src\\Pages",
+    "\\src\\Routing",
+    "\\src\\Sections"
   ],
-  "SelectedNode": "\\src\\App.tsx",
+  "SelectedNode": "\\src\\Pages\\Games.tsx",
   "PreviewInSolutionExplorer": false
 }

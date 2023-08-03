@@ -41,7 +41,10 @@ const gameTileData: TileProps[] = [
             However, if you make too many mistakes you'll get bad ratings and your business might go under!.
             `,
         links: [
-            { label: 'Live Demo (on Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo' }
+            { label: 'Github', url: 'https://github.com/hechlerp/necrofixer' },
+            { label: 'GGJ Website', url: 'https://globalgamejam.org/2020/games/necrofixer-familiar-fixerupper-extraordinaire-zuesly-tangwystl-phd-8' },
+            { label: 'Live', url: 'https://charlieartifact.itch.io/the-necrofixer' }
+
         ]
     },
     {

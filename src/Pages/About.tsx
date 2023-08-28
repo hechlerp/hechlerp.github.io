@@ -1,6 +1,7 @@
 import { Box, Container, Link, Typography } from "@mui/material";
 import { SyntheticEvent, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import personalImage from "../assets/peter-photo.jpg";
 
 function About() {
 
@@ -16,7 +17,7 @@ function About() {
             </Typography>
             <Box sx={{ marginBottom: "20px", display: { xs: "block", md: "flex" }}}>
                 <Box className="profile-img-container" sx={{ marginBottom: {xs: "20px", md: "inherit"}}}>
-                    <img className="profile-img" src="src/assets/peter-photo.jpg" alt="picture of peter" />
+                    <img className="profile-img" src={personalImage} alt="picture of peter" />
                 </Box>
             </Box>
             <Box>

@@ -16,7 +16,7 @@ function About() {
             </Typography>
             <Box sx={{ marginBottom: "20px", display: { xs: "block", md: "flex" }}}>
                 <Box className="profile-img-container" sx={{ marginBottom: {xs: "20px", md: "inherit"}}}>
-                    <img className="profile-img" src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.18169-9/17523118_10155194496068885_1462061510642366071_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=174925&_nc_ohc=JKjhAGiLDtgAX_oCDAK&_nc_ht=scontent-lga3-2.xx&oh=00_AfB0I264hXStSqvZNsk-5B417pfhLvvlZ_1wB8jkErnoiQ&oe=64EBAE87" alt="picture of peter" />
+                    <img className="profile-img" src="src/assets/peter-photo.jpg" alt="picture of peter" />
                 </Box>
             </Box>
             <Box>

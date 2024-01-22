@@ -2,13 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
-    "\\src\\assets\\styles",
     "\\src\\Components",
     "\\src\\Pages",
     "\\src\\Routing",
     "\\src\\Sections"
   ],
-  "SelectedNode": "\\yarn.lock",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

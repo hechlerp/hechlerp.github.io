@@ -11,7 +11,7 @@ const gameTileData: ArticleTileProps[] = [
             games have done it, and the key components of a good stealth system...
             `,
         articleURL: 'https://waywardstrategy.com/2023/06/26/fixing-stealth-in-rts/'
-    },
+    }/*,
     {
         title: "Of Archers and Artillery: Range Dynamics in RTS",
         thumbnailSrc: "https://i.imgur.com/QngmlmA.png",
@@ -20,7 +20,7 @@ const gameTileData: ArticleTileProps[] = [
          your opponent must feel as they see your siege weapons unpacking just outside of where their castle can 
          fight back. And their panic as they send out a wave of cavalry to hopefully end your assault...`,
          articleURL: 'https://waywardstrategy.com/2023/06/26/fixing-stealth-in-rts/'
-    }
+    }*/
 ]
 
 function Articles() {

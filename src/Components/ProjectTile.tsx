@@ -8,16 +8,17 @@ export type TileProps = {
         label: string;
         url: string;
         note?: string;
+        disabled?: boolean;
     }[];
 };
 
 function ProjectTile({ title, description, thumbnailSrc, links }: TileProps) {
 
     const renderableLinks = links.map((link, index) => {
-        const { label, url, note = ""} = link;
+        const { label, url, note = "", disabled = false} = link;
         return (
             <Box sx={{ margin: "0 10px", lineHeight: "3em" }} key={index + "-" + label}>
-                <Button variant="contained" className="button-link" component={Link} href={url} target={"_blank"} sx={{width: "130px"}}>
+                <Button variant="contained" className="button-link" component={Link} href={url} target={"_blank"} sx={{width: "150px"}} disabled={disabled}>
                     {label}
                 </Button>
                 {note ? (

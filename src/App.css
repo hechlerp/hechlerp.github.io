@@ -49,7 +49,12 @@
 }
 
 .button-link:hover {
-    color: var(--button-link-hover);
+    color: var(--button-link-hover) !important;
+}
+
+.button-link.Mui-disabled {
+    background: var(--disabled-button-background) !important;
+    color: var(--color) !important;
 }
 
 .socials-container {

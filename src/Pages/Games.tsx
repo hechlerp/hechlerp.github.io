@@ -14,11 +14,11 @@ const gameTileData: TileProps[] = [
             Most assets currently in the game are placeholders.
             `,
         links: [
-            { label: 'Live Demo (on Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo' }
+            { label: 'Live Demo (Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo' }
         ]
     },
     {
-        title: "Scarlet O'Beetle in the Unseen World",
+        title: "Scarlet O'Beetle and the Unseen World",
         thumbnailSrc: "https://img.itch.zone/aW1nLzE2MjAwNTkxLnBuZw==/original/tKEQhv.png",
         description: `
             A classic adventure point-and-click, story-rich puzzle game set in the fascinating world of insects. While interacting with the characters and learning about their lives, the player will learn exciting scientific facts about the species they encounter and the anthropic impact of climate change and pollution.
@@ -26,7 +26,7 @@ const gameTileData: TileProps[] = [
             Created with a 10-person team for the 2024 Just Play Jam, built in Unity/C#.
             `,
         links: [
-            { label: 'Itch.io', url: "https://terminalvector.itch.io/scarlet-unseen-world"},
+            { label: 'Itch.io (coming soon)', url: "https://terminalvector.itch.io/scarlet-unseen-world", disabled: true},
             { label: 'JPJ Site', url: "https://www.justplayjam.com/"}
         ]
     },

@@ -18,6 +18,19 @@ const gameTileData: TileProps[] = [
         ]
     },
     {
+        title: "Scarlet O'Beetle in the Unseen World",
+        thumbnailSrc: "https://img.itch.zone/aW1nLzE2MjAwNTkxLnBuZw==/original/tKEQhv.png",
+        description: `
+            A classic adventure point-and-click, story-rich puzzle game set in the fascinating world of insects. While interacting with the characters and learning about their lives, the player will learn exciting scientific facts about the species they encounter and the anthropic impact of climate change and pollution.
+        
+            Created with a 10-person team for the 2024 Just Play Jam, built in Unity/C#.
+            `,
+        links: [
+            { label: 'Itch.io', url: "https://terminalvector.itch.io/scarlet-unseen-world"},
+            { label: 'JPJ Site', url: "https://www.justplayjam.com/"}
+        ]
+    },
+    {
         title: "Shrouded City",
         thumbnailSrc: "https://i.imgur.com/QngmlmA.png",
         description: "A 2D dungeon crawler built with Pixi.js. Navigate the rooms of the occult and reach the cliffs at the end.",
@@ -30,7 +43,7 @@ const gameTileData: TileProps[] = [
         title: "Rat Burglar",
         thumbnailSrc: "https://ggjv4.s3.us-west-1.amazonaws.com/files/styles/sidebar_full/s3/games/2024/815430/featured/Cover.png?VersionId=n1pnDlFxuV_a0aMuoqKUrueA9n4ZMu16&itok=383X6ZVo",
         description: `
-            Crreated with a team for Global Game Jam 2024.
+            Created with a team for Global Game Jam 2024.
 
         Traverse a New York subway station as one of two rats in this local co-op game. In honor of Pizza Rat, your quest is to grab the pizza and drag it from the first platform to your hole. Be careful of subways and people, as they have no respect for Ratkind and will flatten you. Squeak at the subway passengers to make them run away in panic!
 

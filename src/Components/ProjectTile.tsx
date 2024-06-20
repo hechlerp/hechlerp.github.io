@@ -36,25 +36,13 @@ function ProjectTile({ title, description, headerMedia, links }: TileProps) {
     })
 
     let renderableMedia: string | ReactElement = "";
-    // if (additionalMedia) {
-    //     const mediaTiles = additionalMedia.map(media => {
-    //         return (
-    //             <Box className="tile-media-positioner">
-    //                 <CardMedia className="tile-media" key={media.name} src={media.src} component={media.type} />
-    //             </Box>
-    //         );
-    //     })
-    //     renderableMedia = <Box className="tile-media-container">{mediaTiles}</Box>;
-    // }
-    console.log(headerMedia.src);
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", maxWidth: {xs: "400px", md: "600px", lg: "700px"}, margin: "0 auto" }}>
             <Typography variant="h5" sx={{fontStyle: "italic"}}>
                 {title}
             </Typography>
-            <Box /*sx={{ maxWidth: "300px", margin: "0 auto", border: "1px solid #000", display: "flex", marginTop: "10px"}}*/ className="tile-media-container">
-                {/* <img src={thumbnailSrc} alt={title} style={{ height: "100%", width: "100%" }} referrerPolicy="no-referrer"/> */}
+            <Box className="tile-media-container">
                 <Box className="tile-media-positioner">
                     <CardMedia image={headerMedia.src} className="tile-media bordered-media" component={headerMedia.type} />
                 </Box>

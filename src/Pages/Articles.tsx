@@ -4,7 +4,7 @@ import ProjectTile, { ArticleTileProps } from "../Components/ArticleTile";
 const gameTileData: ArticleTileProps[] = [
     {
         title: "Fixing Stealth in RTS",
-        thumbnailSrc: "https://bccasteel.files.wordpress.com/2023/06/6001862.jpg",
+        headerMedia: { src: "https://bccasteel.files.wordpress.com/2023/06/6001862.jpg", type: "image", name: "articleHeader" },
         description: `It’s no secret that people love stealth mechanics. From dedicated stealth games like Dishonored 
             and Desperados 3 to awkward, forced stealth mechanics in The Witcher 2, stealth is all over 
             gaming. Today I’d like to take a few minutes to talk about stealth in RTS games, how different 
@@ -14,7 +14,7 @@ const gameTileData: ArticleTileProps[] = [
     },
     {
         title: "Of Archers and Artillery: Range Dynamics in RTS",
-        thumbnailSrc: "https://bccasteel.files.wordpress.com/2024/01/trebuchet.jpg",
+        headerMedia: { src: "https://bccasteel.files.wordpress.com/2024/01/trebuchet.jpg", type: "image", name: "articleHeader" },
         description: `If you’ve ever played Age of Empires 2, you know how deeply satisfying it is to use the Trebuchet…
          the firing sound, the arcing rock/fireball about to lay waste to your opponent’s castle. That moment of dread 
          your opponent must feel as they see your siege weapons unpacking just outside of where their castle can 

@@ -41,7 +41,6 @@
     padding: 2em;
     background: var(--content-background);
     color: var(--color);
-    /*background: #e5e5e5;*/
 }
 
 .full-height {
@@ -58,8 +57,6 @@
 }
 
 .socials-container {
-    /*color: #888;*/
-    /*background: #e5e5e5;*/
     background: var(--content-background);
     color: var(--color);
     margin-top: 0;
@@ -72,8 +69,6 @@
 }
 
 .tile-media {
-  /* height: 100% !important;
-  width: 100% !important; */
   height: 100%;
   width: 100%;
 }

@@ -1,23 +1,30 @@
-import { Box, Button, Link, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Link, Typography } from "@mui/material";
 
 export type ArticleTileProps = {
     title: string;
     description: string;
-    thumbnailSrc: string;
+    headerMedia: {
+        src: string;
+        name: string;
+        type: "video" | "image" | "iframe"
+    };
     articleURL: string;
 };
 
-function ArticleTile({ title, description, thumbnailSrc, articleURL }: ArticleTileProps) {
+function ArticleTile({ title, description, headerMedia, articleURL }: ArticleTileProps) {
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", maxWidth: {xs: "400px", md: "600px", lg: "700px"}, margin: "0 auto" }}>
             <Typography variant="h5" sx={{fontStyle: "italic"}}>
                 {title}
             </Typography>
-            <Box sx={{ maxWidth: "300px", margin: "0 auto", border: "1px solid #000", display: "flex", marginTop: "10px"}}>
-                <a href={articleURL} >
-                    <img src={thumbnailSrc} alt={title} style={{ height: "100%", width: "100%" }} referrerPolicy="no-referrer"/>
-                </a>
+            
+            <Box className="tile-media-container">
+                <Box className="tile-media-positioner">
+                    <a href={articleURL} target="_blank" rel="no-referrer" >
+                        <CardMedia image={headerMedia.src} className="tile-media bordered-media" component={headerMedia.type} />
+                    </a>
+                </Box>
             </Box>
             <Typography sx={{marginTop: "20px", textAlign: "left", whiteSpace: "pre-line"}} variant="body2">
                 {description}

@@ -4,7 +4,7 @@ import ProjectTile, { TileProps } from "../Components/ProjectTile";
 const gameTileData: TileProps[] = [
     {
         title: "Planar Peril",
-        thumbnailSrc: "https://i.imgur.com/93sqcAV.png",
+        headerMedia: { src: "https://i.imgur.com/93sqcAV.png", name: "screenshot", type: "image" },
         description: `An in-progress RTS made with Unity/C#. In the current build, there are two playable scenarios: the tutorial and the wave defense mode.
 
             Gather resources, build a base, and fight off the increasingly dangerous waves of enemies in this war of alternate versions of Earth.
@@ -14,25 +14,25 @@ const gameTileData: TileProps[] = [
             Most assets currently in the game are placeholders.
             `,
         links: [
-            { label: 'Live Demo (Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo' }
+            { label: 'Demo (Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo' }
         ]
     },
     {
         title: "Scarlet O'Beetle and the Unseen World",
-        thumbnailSrc: "https://img.itch.zone/aW1nLzE2MjAwNTkxLnBuZw==/original/tKEQhv.png",
+        headerMedia: { src: "https://www.youtube.com/embed/qapTklDtEww", name: "trailer", type: "iframe"},
         description: `
             A classic adventure point-and-click, story-rich puzzle game set in the fascinating world of insects. While interacting with the characters and learning about their lives, the player will learn exciting scientific facts about the species they encounter and the anthropic impact of climate change and pollution.
         
-            Created with a 10-person team for the 2024 Just Play Jam, built in Unity/C#.
+            2024 Just Play Jam Finalist
             `,
         links: [
-            { label: 'Itch.io (coming soon)', url: "https://terminalvector.itch.io/scarlet-unseen-world", disabled: true},
-            { label: 'JPJ Site', url: "https://www.justplayjam.com/"}
+            { label: 'Itch.io', url: "https://terminalvector.itch.io/scarlet-unseen-world"},
+            { label: 'Just Play Jam', url: "https://www.justplayjam.com/"}
         ]
     },
     {
         title: "Shrouded City",
-        thumbnailSrc: "https://i.imgur.com/QngmlmA.png",
+        headerMedia: { src: "https://i.imgur.com/QngmlmA.png", name: "screenshot", type: "image" },
         description: "A 2D dungeon crawler built with Pixi.js. Navigate the rooms of the occult and reach the cliffs at the end.",
         links: [
             { label: 'Github', url: 'https://github.com/hechlerp/ShroudedCity' },
@@ -41,7 +41,7 @@ const gameTileData: TileProps[] = [
     },
     {
         title: "Rat Burglar",
-        thumbnailSrc: "https://ggjv4.s3.us-west-1.amazonaws.com/files/styles/sidebar_full/s3/games/2024/815430/featured/Cover.png?VersionId=n1pnDlFxuV_a0aMuoqKUrueA9n4ZMu16&itok=383X6ZVo",
+        headerMedia: { src: "https://ggjv4.s3.us-west-1.amazonaws.com/files/styles/sidebar_full/s3/games/2024/815430/featured/Cover.png?VersionId=n1pnDlFxuV_a0aMuoqKUrueA9n4ZMu16&itok=383X6ZVo", name: "screenshot", type: "image" },
         description: `
             Created with a team for Global Game Jam 2024.
 
@@ -59,7 +59,7 @@ const gameTileData: TileProps[] = [
     },
     {
         title: "The Necrofixer",
-        thumbnailSrc: "https://img.itch.zone/aW1hZ2UvNTYxNjA1LzI5NTE4MzIuanBn/original/D0suYE.jpg",
+        headerMedia: { src: "https://img.itch.zone/aW1hZ2UvNTYxNjA1LzI5NTE4MzIuanBn/original/D0suYE.jpg", name: "screenshot", type: "image" },
         description: `Created with a team for Global Game Jam 2020.
 
             Following the theme of repair, our team set about to build a  game centered around a humble business owner: Zeusly Tangwystl Phd, The Necrofixer!
@@ -80,7 +80,7 @@ const gameTileData: TileProps[] = [
     },
     {
         title: "Belong",
-        thumbnailSrc: "https://ggj.s3.amazonaws.com/styles/game_sidebar__wide/game/featured_image/screenshot_2018-01-28_21.40.05.png?itok=Ys2wi2iW&timestamp=1517236977",
+        headerMedia: { src: "https://ggj.s3.amazonaws.com/styles/game_sidebar__wide/game/featured_image/screenshot_2018-01-28_21.40.05.png?itok=Ys2wi2iW&timestamp=1517236977", name: "screenshot", type: "image" },
         description: `Created with a team for Global Game Jam 2018.
 
             Eat seeds and poop trees to traverse planets and reach your flock. The Chinese word in the logo, 歸途 (guī tu) means: the way back, one's journey home.`,

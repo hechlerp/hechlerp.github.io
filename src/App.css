@@ -71,6 +71,34 @@
     font-size: 32px;
 }
 
+.tile-media {
+  /* height: 100% !important;
+  width: 100% !important; */
+  height: 100%;
+  width: 100%;
+}
+
+.tile-media-positioner {
+  width: 350px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.tile-media:last-child {
+  margin-bottom: 0;
+}
+
+.tile-media-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.bordered-media {
+  border: 1px solid #000;
+}
+
 .contact-form-fields-container {
     display: flex;
     flex-direction: column;

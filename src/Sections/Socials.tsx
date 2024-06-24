@@ -11,7 +11,7 @@ const socialsData: SocialButtonProps[] = [
     {
         icon: <DescriptionIcon />,
         label: "Resume",
-        href: "https://drive.google.com/file/d/1ETbjKq9oAUNDGMdvKYlg0_AMXdCH7Wrp/view?usp=sharing"
+        href: "https://drive.google.com/file/d/17t98oZx2eCh1HqZjVswVd5yQDfedeCaG/view?usp=sharing"
     },
     {
         icon: <LinkedInIcon />,

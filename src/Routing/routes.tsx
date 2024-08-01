@@ -1,7 +1,7 @@
 import About from "../Pages/About";
 import Articles from "../Pages/Articles";
 import Contact from "../Pages/Contact";
-import Games from "../Pages/Games";
+import Games from "../Pages/GamesV2";
 
 export const routes = [
     {

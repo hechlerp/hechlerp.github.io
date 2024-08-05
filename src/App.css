@@ -205,6 +205,8 @@
   background: var(--content-background) !important;
   color: var(--color) !important;
   transition: min-height .25s ease-in-out !important;
+  border: 1px solid var(--color);
+  box-shadow: 0 0 2px var(--color) !important;
 }
 
 .project-accordion-expander {
@@ -212,7 +214,7 @@
 }
 
 .project-block-container {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .project-detail-container {

@@ -1,4 +1,5 @@
-import { Box, Button, CardMedia, Link, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Link, SvgIconTypeMap, Typography } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { ElementType, FunctionComponent, ReactElement, SVGProps, SyntheticEvent } from "react";
 
 export type DetailTileProps = {
@@ -33,6 +34,11 @@ type TextLink = {
     } | {
         iconType: "svg",
         icon: FunctionComponent<SVGProps<SVGSVGElement>>;
+    } | {
+        iconType: "mui",
+        icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+            muiName: string;
+        }
     }
 )
 

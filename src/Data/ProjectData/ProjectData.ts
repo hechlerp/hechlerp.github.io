@@ -1,3 +1,5 @@
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import { Instagram, Language } from "@mui/icons-material";
 import { DetailProjectData } from "../../Components/DetailProjectTile";
 import bulwarkRocketsGif from "../../assets/bulwark rockets.gif";
 import sniperAIGif from "../../assets/sniper ai.gif";
@@ -19,6 +21,18 @@ import shroudedCityComposition from "../../assets/shroudedCityBehaviors.png"
 import shroudedCityWalls from "../../assets/shroudedCityWalls.png"
 import shroudedCityRendering from "../../assets/shroudedCityRendering.png"
 import belongOpening from "../../assets/belongOpening.png";
+import ratBurglarPassengers from "../../assets/ratBurglarPassengers.png";
+import ratBurglarPool1 from "../../assets/ratBurglarPool1.png";
+import ratBurglarPool2 from "../../assets/ratBurglarPool2.png";
+import ratBurglarSubway from "../../assets/ratBurglarSubway.png";
+import ratBurglarRandoms from "../../assets/ratBurglarRandoms.png";
+import scarletDialogueCode from "../../assets/scarletDialogueCode.png";
+import scarletQuestMessaging from "../../assets/scarletQuestMessaging.png";
+import scarletDialogue from "../../assets/scarletDialogue.png";
+import necrofixerAbomination from "../../assets/necrofixerAbomination.png";
+import belongTrees from "../../assets/belongTrees.png";
+import belongTreeCreator from "../../assets/belongTreeCreationScript.png";
+import BandcampIcon from "../../assets/Bandcamp-button-circle-black.svg?react";
 import ItchIcon from "../../assets/itchio-textless-black.svg?react";
 
 const gameTileData: DetailProjectData[] = [
@@ -59,8 +73,7 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Technical Details",
                 contents: [
-                    {type: "text", content: `
-                        Planar Peril is built with Unity/C#.
+                    {type: "text", content: `Planar Peril is built with Unity/C#.
         
                         I've built a wide array of features for the game. While this is a passion project and not going to be released in full anytime soon, many of the features are already in the demo build. Here are some features I'm particularly proud of:
         
@@ -168,18 +181,19 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Credits",
                 contents: [
-                    {type: "text", content: `
-                        Peter Hechler - Creator, Programming, Design 
+                    {type: "text", content: `Peter Hechler - Creator, Programmer, Game Designer
         
-                        Shea Sweeney - Icons 
+                        Shea Sweeney - Icon Artist
                         
-                        Greg Berg - UI Design and Faction Logos
+                        Greg Berg - UI Designer and Logo Designer
                         
-                        John Goodman - Concept Art
+                        John Goodman - Concept Artist
                         
-                        Zackry Broodie-Stewart - Concept Art
+                        Zackry Broodie-Stewart - Concept Artist
+
+                        Jon Lai - Concept Artist
         
-                        Special thanks to Jon Lai, Dylan McNair, and Michael Wang
+                        Special thanks to Dylan McNair, and Michael Wang
                     `}
                 ]
             },
@@ -207,11 +221,153 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Overview",
                 contents: [
-                    {type: "text", content: `
-                        A classic adventure point-and-click, story-rich puzzle game set in the fascinating world of insects. While interacting with the characters and learning about their lives, the player will learn exciting scientific facts about the species they encounter and the anthropic impact of climate change and pollution.
+                    {type: "text", content: `A classic adventure point-and-click, story-rich puzzle game set in the fascinating world of insects. While interacting with the characters and learning about their lives, the player will learn exciting scientific facts about the species they encounter and the anthropic impact of climate change and pollution.
         
                         Scarlet O'Beetle was created as part of the 2024 Just Play Jam, a game jam focused on environmentalism and socially conscious games. We are proud to have been finalists in the jam, and to contribute to environmental awareness in what small way we can.
+                        
+                        The game was created with a 10-person team, consisting of teammates from all over the globe, collaborating over the course of around 14 days. After the initial 14-day period, once our game was selected as a finalist, we then had more time to refine the game, fix bugs (no pun intended), and make the game more presentable. Overall, we worked on the game over the course of about a month.
                         `
+                    }
+                ]
+            },
+            { 
+                title: "Technical Details",
+                contents: [
+                    {type: "text", content: `Scarlet O'Beetle is made in Unity/C#, and has a much larger scope than other game jam titles I've worked on. Part of this was the length of the jam, but part of it was the ambition of the team. The game features some 800 lines of dialogue, and that alone required significant attention from our programming team. I'll focus on two major aspects from this game:
+                        
+                            - Dialogue System
+                            - Messaging and Observer Patterns
+
+                        These pieces were crucial to the game both being finished on time and scaling to meet our design needs. Let's start iwth the dialogue system.
+
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Dialogue System"},
+                    {type: "img", content: scarletDialogue},
+                    {type: "text", content: `
+                        Dialogue is a cornerstone of the gameplay loop of Scarlet O'Beetle. As I mentioned above, there are about 800 lines of dialogue in Scarlet. When I joined the project, the team had started creating a dialogue system involving attaching references to ScriptableObjects to GameObjects, with children of the GameObject containing follow-up dialogue. Dialogue choices were handled by sibling relationships.
+
+                        This was an unscalable, unmaintainable solution. It was way too difficult to translate the google sheet of dialogue to all of these individual game objects, and it required extensive knowledge of Unity for our writer to update her dialogue. It also meant that a programmer had to hunt for every object with updated dialogue to make the necessary changes. The parent-child relationship made following a conversation tricky, and finding the pieces of dialogue in the file structure was no easier.
+
+                        Realizing that solution wouldn't allow us to make the deadline, we reworked the whole thing. Rather than linking dialogue with ScriptableObjects, we created a YAML file with our dialogue stored in a regular data structure (much like I did in Planar). We then added YamlDotNet to translate the YAML file in C# classes on game start and access dialogue with a singleton. The Dialogue singleton stored every exchange in a dictionary, keyed by ids. With a transformation layer and an easy way to access dialogue by id, our resulting code ended up looking like this:
+                        `
+                    },
+                    {type: "img", content: scarletDialogueCode},
+                    {type: "text", content: `
+                        There are a number of advantages to this approach. One of the most important was that exchange ids were easy to include everywhere we needed them, without needing to worry about how the dialogue would play out. A character just needed to know where their dialogue was stored, and the dialogue system handled the rest.
+
+                        Another key advantage was allowing designers to avoid learning the intricacies of Unity or our codebase. Our writer was able to change the dialogue either just by updating the google sheet or by going into the YAML and editing lines directly there. They could see the whole conversation and context, and touch only the parts of the game that were relevant to them.
+
+                        While it was not insignificant to implement, this system saved us a ton of time and allowed us to continually improve the dialogue. If I were to go back to the project, I would love to create a node-based dialogue editor like many other dialogue systems do, and focus on making dialogue able to branch without returning to its initial set of options.
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Messaging and Observer Patterns"},
+                    {type: "img", content: scarletQuestMessaging},
+                    {type: "text", content: `
+                        One pattern that I've used throughout the games I've developed is the observer pattern for event messaging. For those unfamiliar with it, the idea is that different parts of the game can subscribe to particular event identifiers, and other parts of the game can then emit messages using those event identifiers to inform the subscribers that a piece of the game has changed. In the code above, when a quest milestone is reached, like succesfully diagnosing your patient, the quest manager emits a message saying that the diagnosis is complete. Then, any part of the game that was listening for that message can react, perhaps unlocking the next quest, or making a new NPC appear.
+
+                        The biggest advantage of this is decoupling pieces of the game that don't need to know and care about each other. The QuestStateManager is really just concerned with whether maintaining which milestones have been reached. It shouldn't need to track whether that new NPC should appear yet, which dialogue a particular character should use, or anything like that. Those responsibilities can be offloaded to the parts of the game that are tied to that particular NPC, or a particular quest. And if we decide to remove a quest, we can simply remove code related to that quest. Even if we forgot to remove the quest milestone from the QuestStateManager, it would simply emit an event that nothing would react to.
+
+                        `
+                    }
+                ] 
+            },
+            {
+                title: "Credits",
+                contents: [
+                    {
+                        type: "text",
+                         content: `Monica Serban {monica} - Original Concept, Narrative Designer/Writer
+        
+                            Henry Dotson {henry} - Producer, Lead Programmer
+        
+                            Manuel Garcia {manuel} - Unity Dev
+        
+                            Emelie Kronquist {emelie} - Sound Designer, Sound Engineer
+        
+                            Hannah Kim {hannah} - 2D Art, Character Designer
+
+                            Alejandro Zeguecios {alejandro} - Music Composer
+
+                            Yiyi Zhang {yiyi} - 2D Artist, UI Designer
+                            
+                            Peter Hechler {peter} - Unity Dev
+
+                            Sydney Gardner {sydney} - 2D Artist, Animator
+
+                            Akshay Bharadhwa {akshay} - Unity Dev, Animator
+
+                        `,
+                        textLinks: { 
+                            monica: [
+                                {
+                                    icon: LinkedIn,
+                                    iconType: "mui",
+                                    href: "https://www.linkedin.com/in/maria-monica-serban-2a085419/",
+                                    label: "LinkedIn"
+                                },
+                            ],
+                            henry: [{
+                                icon: LinkedIn,
+                                iconType: "mui",
+                                href: "https://www.linkedin.com/in/henry-dotson/",
+                                label: "itch.io"
+                            }],
+                            manuel: [],
+                            emelie: [{
+                                icon: Language,
+                                iconType: "mui",
+                                href: "https://www.ekronquist.com/",
+                                label: "personal site"
+                            }],
+                            hannah: [
+                                {
+                                    icon: Instagram,
+                                    iconType: "mui",
+                                    href: "https://www.instagram.com/minoyjoy/",
+                                    label: "instagram"
+                                }
+                            ],
+                            alejandro: [
+                                {
+                                    icon: Language,
+                                    iconType: "mui",
+                                    href: "https://alejandrozeguecios.com/",
+                                    label: "personal site"
+                                }
+                            ],
+                            yiyi: [
+                                {
+                                    icon: LinkedIn,
+                                    iconType: "mui",
+                                    href: "https://www.linkedin.com/in/yiyi-zhang/",
+                                    label: "LinkedIn"
+                                }
+                            ],
+                            peter: [{
+                                icon: Language,
+                                iconType: "mui",
+                                href: "https://peterhechler.com",
+                                label: "personal site"
+                            }],
+                            sydney: [
+                                {
+                                    icon: LinkedIn,
+                                    iconType: "mui",
+                                    href: "https://www.linkedin.com/in/sydney-k-gardner/",
+                                    label: "LinkedIn"
+                                }
+                            ],
+                            akshay: [
+                                {
+                                    icon: Language,
+                                    iconType: "mui",
+                                    href: "https://akshayb.xyz/",
+                                    label: "personal site"
+                                }
+                            ]
+                        
+                        }
                     }
                 ]
             }
@@ -234,8 +390,7 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Overview",
                 contents: [
-                    {type: "text", content: `
-                        A 2D dungeon crawler built with Pixi.js. Navigate the rooms of the occult and reach the cliffs at the end.
+                    {type: "text", content: `A 2D dungeon crawler built with Pixi.js. Navigate the rooms of the occult and reach the cliffs at the end.
         
                         One of the first games I built after my completing my course at App Academy, back in 2016.
         
@@ -246,8 +401,7 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Technical Details",
                 contents: [
-                    {type: "text", content: `
-                        Shrouded City is built entirely with JavaScript, with Pixi.js as a render library to interface with WebGL. Part of the purpose of this project was to see how far I could take the JavaScript I'd learned without a major framework or engine. If I were to return to this project, I'd change a whole lot about the way it functions, but as it stands, there are a few things worth highlighting.
+                    {type: "text", content: `Shrouded City is built entirely with JavaScript, with Pixi.js as a render library to interface with WebGL. Part of the purpose of this project was to see how far I could take the JavaScript I'd learned without a major framework or engine. If I were to return to this project, I'd change a whole lot about the way it functions, but as it stands, there are a few things worth highlighting.
         
                         - Composition for game objects
                         - Wall collision optimizations
@@ -284,9 +438,9 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Credits",
                 contents: [
-                    {type: "text", content: `
-                        Creator, Programming, Design, Art, Animations - Peter Hechler
-                        Enemy sprites, animations, some backgrounds - Evelyn Lee
+                    {type: "text", content: `Peter Hechler - Creator, Programmer, Designer, Artist, Animator
+
+                        Evelyn Lee - Character Artist, Animator, Environment Artist
                     `
                 }
                 ]
@@ -321,19 +475,58 @@ const gameTileData: DetailProjectData[] = [
                 title: "Overview",
                 contents: [
                     {type: "text", content: `
-                        Created with a team for Global Game Jam 2024.
+                        Created with a five-person team for Global Game Jam 2024.
         
                         Traverse a New York subway station as one of two rats in this local co-op game. In honor of Pizza Rat, your quest is to grab the pizza and drag it from the first platform to your hole. Be careful of subways and people, as they have no respect for Ratkind and will flatten you. Squeak at the subway passengers to make them run away in panic!
         
                         May your heist go off without a hitch!
-                        
-                        (Created for the 2024 Global Game Jam)
+
+                        The game was inspired by the famous Pizza Rat of the New York subway system.
+
+                        Like other Global Game Jam games, it was created over the course of 48 hours with teammates who I had never met before starting the jam.
                     `}
                 ]
             },
             {
                 title: "Technical Details",
                 contents: [
+                    {type: "text", content: `Rat Burglar is made with Unity/C#. A couple of the patterns used are patterns I've found to be very effective in other work I've done. I'd like to discuss two of them here:
+                                - Object Pooling
+                                - Weighted Randoms
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Object Pooling"},
+                    {type: "img", content: ratBurglarPassengers},
+                    {type: "text", content: `
+                        For those not familiar with object pooling, the idea is that instead of creating and destroying game objects when they are needed or no longer needed, you create a pool of objects to draw from. When a unit is required, it's only created if there are none available. And when an object is no longer needed, instead of destroying it, you deactivate it (hide it) and mark it as available for use.
+
+                        There are a couple advantages to this approach. One major plus is avoiding performance issues caused by the creation and destruction processes. Those processes tend to be slower than things like hiding an object or repositioning it, partly because of things like garbage collection. Unity itself recommends this pattern when dealing with large quantities of objects. We had a significant number of passengers emerging from subways (pictured above), and this seemed like both an easy way to manage our objects as well as a free performance boost. And given how quick it is to implement a pool pattern, this was a great pattern to employ. Our pools has two pieces to them:
+                            1) A static singleton that owned the arrays, with a method to request a poolable object.
+                            2) An interface all pooled objects had to inherit from, to standardize access patterns.
+
+                        The first image below pictures the singleton pattern and the interface. The second shows the function for requesting a pooled object.
+                        `
+                    },
+                    {type: "img", content: ratBurglarPool1},
+                    {type: "img", content: ratBurglarPool2},
+                    {type: "text", content: `
+                        The other aforementioned advantage of object pools are the access patterns themselves. When you have an actual pool of objects that you can't exceed and might need to know the state of, an object pool is an easy pattern to keep things consistent. In Rat Burglar, we had a set of 4 subways that would zip across the level as obstacles. Given that there were only 4 tracks and a track couldn't hold more than 1 subway at a time, the pool made managing the flow of subways simple. Are all 4 subways out? Then we can't spawn a new one. Do we have some empty tracks? Then let's see which subways are available and send them down those tracks.
+                        
+                        Not needing to worry about grabbing the wrong subway, duplicating subways, or anything of that nature made development much smoother.
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Weighted Randoms"},
+                    {type: "img", content: ratBurglarSubway},
+                    {type: "text", content: `
+                        The other major pattern I wanted to discuss is actually also connected to subways. While Rat Burglar is a pretty short game, we didn't want the danger to become too predictable. Certain pieces could be, such as the first subway arriving always starting closest to you. But we wanted players to feel like they were always in danger until they could make it back to their home. Given that the game is a local co-op game, increasing the chaos leads to a lot of panicked, dynamic coordination between the players. To provide this chaos, we wanted the subways to have an element of randomness, without necessarily going to irrelevant platforms (such as one you'd already passed). Enter the weighted random.
+
+                        `
+                    },
+                    {type: "img", content: ratBurglarRandoms},
+                    {type: "text", content: `
+                        This is the function for spawning a subway when a given interval passes. The subway weightings could change depending on where the players were in the level, but it made certain platforms much more likely than others. This pattern gave us control over how much danger the players were in, with enough chaos to prevent them from ever truly being able to tell where the next subway would come from.
+                        `
+                    }
 
                 ],
             },
@@ -342,8 +535,7 @@ const gameTileData: DetailProjectData[] = [
                 contents: [
                     {
                         type: "text",
-                         content: `
-                            Vivian Chen {vivian} - Character art, prop art, ui art
+                         content: `Vivian Chen {vivian} - Character art, prop art, ui art
         
                             Charlene (Xinyu) Zhang {charlene} - Environment art, character art
         
@@ -405,7 +597,7 @@ const gameTileData: DetailProjectData[] = [
             Following the theme of repair, our team set about to build a  game centered around a humble business owner: Zeusly Tangwystl Phd, The Necrofixer!
 
             Want a cuter cat? visit the Necrofixer!
-            Want a familiar that strikes fear into your enemies? Dr. Tanwystl can supply you with what you need!
+            Want a familiar that strikes fear into your enemies? Dr. Tangwystl can supply you with what you need!
 
             Players play as Dr. Tangwystl, who owns a small shop where wizards, witches, warlocks, and other magic folk can bring their familiar creatures to undergo strange operations. By casting magic spells on the customer's familiar pet (clicking limbs), players make adjustments to the animal's appearance in order to please each patron.
 
@@ -423,27 +615,103 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Overview",
                 contents: [
-                    {type: "text", content: `Created with a team for Global Game Jam 2020.
+                    {type: "text", content: `Created with an 9-person team for Global Game Jam 2020.
 
-                        Following the theme of repair, our team set about to build a  game centered around a humble business owner: Zeusly Tangwystl Phd, The Necrofixer!
+                        Following the theme of repair, our team set about to build a game centered around a humble business owner: Zeusly Tangwystl Phd, The Necrofixer!
         
                         Want a cuter cat? visit the Necrofixer!
-                        Want a familiar that strikes fear into your enemies? Dr. Tanwystl can supply you with what you need!
+                        Want a familiar that strikes fear into your enemies? Dr. Tangwystl can supply you with what you need!
         
                         Players play as Dr. Tangwystl, who owns a small shop where wizards, witches, warlocks, and other magic folk can bring their familiar creatures to undergo strange operations. By casting magic spells on the customer's familiar pet (clicking limbs), players make adjustments to the animal's appearance in order to please each patron.
         
-                        However, if you make too many mistakes you'll get bad ratings and your business might go under!.
+                        However, if you make too many mistakes you'll get bad ratings and your business might go under!
                         `
                     }
                 ]
             },
             {
                 title: "Technical Details",
-                contents: []
+                contents: [
+                    {type: "text", content: `Like Rat Burglar and Belong, this was a game made with a team that hadn't met before Global Game Jam 2020. Given our team of predominantly artists, we decided to focus on making an asset-heavy, programming-light game. It was a great opportunity to teach one of the other devs a bit about Unity and version control, and to have him cut his teeth on a project with a larger team. 
+                        
+                        Because of its scope, this section will be a bit smaller than other titles I've worked on. I'll talk a bit about our body part-swapping system below.
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Swapping Body Parts"},
+                    {type: "img", content: necrofixerAbomination},
+                    {type: "text", content: `
+                        The core gameplay of The Necrofixer was swapping around body parts of a pet to make it fit the specifications of each customer. However, as Zeusly Tangwystl is not the best of wizards, he swaps the parts for random other animal parts. To control this, we defined a set of possibly animals with weighted randoms based on how "normal" they were. Something like a cat or dog is more common than an octopus, and rarest of all are the human parts.
+
+                        Given that finding body parts for any given animal is relatively uncommon (the most common are around a 20% chance), we gave animals features, and the customers only ever ask for features. So if your customer wants a "cute" animal, you can use body parts from cats, dogs, and unicorns to contribute to your final score. This way, even with high variance, you can pass each assignment if you're careful. 
+
+                        The soundtrack was also made modularly, with a different track for each type of animal part you can encounter. As you come across new animals, it adds their contribution to the soundtrack, all of which work in concert.
+                        `
+                    }
+                ]
             },
             {
                 title: "Credits",
-                contents: []
+                contents: [{
+                    type: "text",
+                     content: `Christine Fouron {christine} - Character artist
+    
+                        Charlie Harper {charlie} - Technical Artist
+    
+                        Peter Hechler {peter} - Programmer
+    
+                        Merry Hospelthorn {merry} - UI Artist
+    
+                        Nyusha Iampolski {nyusha} - Character Artist
+
+                        Stefan Lazarevic {stefan} - Programmer
+
+                        Anneliese Lee-Reid {anneliese} - Environment Artist
+
+                        Scott Tongue {scott} - Programmer
+
+                        Gautam Srikishan {gautam} - Music Composer and SFX Designer
+
+                    `,
+                    textLinks: { 
+                        christine: [],
+                        charlie: [
+                            {
+                                icon: Language,
+                                iconType: "mui",
+                                href: "www.charlotte-harper.com",
+                                label: "personal site"
+                            }
+                        ],
+                        peter: [{
+                            icon: Language,
+                            iconType: "mui",
+                            href: "https://peterhechler.com",
+                            label: "personal site"
+                        }],
+                        merry: [],
+                        nyusha: [],
+                        stefan: [],
+                        anneliese: [],
+                        scott: [],
+                        gautam: [
+                            {
+                                icon: Instagram,
+                                iconType: "mui",
+                                href: "https://www.instagram.com/floatingfast/?hl=en",
+                                label: "instagram"
+
+                            },
+                            {
+                                icon: BandcampIcon,
+                                iconType: "svg",
+                                href: "https://floatingfast.bandcamp.com/",
+                                label: "bandcamp"
+                            }
+                        ],
+                    
+                    }
+                }
+                ]
             }
             
         ]
@@ -461,14 +729,16 @@ const gameTileData: DetailProjectData[] = [
         projectHeaderMediaType: "img",
         projectLinks: [
             { label: 'Github', url: 'https://github.com/Davis-B-Allen/birdtest' },
-            { label: 'GGJ Website', url: 'https://globalgamejam.org/2018/games/belong', note: 'PC version available for download' },
+            { label: 'GGJ Website', url: 'https://v3.globalgamejam.org/2018/games/belong', note: 'PC version available for download' },
             { label: 'Live', url: 'http://hechlerp.github.io/belong-web/', note: 'Runs best on Chrome' }
         ],
         subsections: [
             {
                 title: "Overview",
                 contents: [
-                    {type: "text", content: `Created with a team for Global Game Jam 2018.
+                    {type: "text", content: `Created with a 6-person team for Global Game Jam 2018.
+
+                        Following the jam's theme of "home", we created a game about a bird finding its way across the stars back to its flock.
 
                         Eat seeds and poop trees to traverse planets and reach your flock. The Chinese word in the logo, 歸途 (guī tu) means: the way back, one's journey home.`
                     }
@@ -477,14 +747,51 @@ const gameTileData: DetailProjectData[] = [
             {
                 title: "Technical Details",
                 contents: [
+                    { type: "text", content: `Like The Necrofixer and Rat Burglar, this was created with a group of strangers as part of a 48-hour jam. Our two major mechanics in the game were spawning trees (so you could reach other planets), and the gravity shifting when you got close to another planet. I worked closely with Anton on creating the tree spawning loop, so I'll discuss that here.
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Pooping Seeds, Spawning Trees"},
+                    {type: "img", content: belongTrees},
+                    {type: "text", content: `
+                        In order for the player to move from planet to planet in Belong, they need to be able to platform into the other planet's gravitational field. However, you can't jump all that high (or fly), so to do so, you'll need a taller platform. Every time you eat a seed, you'll poop out a fertilized seed a few seconds later, and a tree of increasing height will erupt from the planet's surface.
 
+                        To make this work, we needed a few things - the angle to spawn the tree, the height of the tree, and where to initially position the tree so that it would shoot out to its full height.
+
+                        The angle was easy enough to do. All we really needed to know was where the seed was and which planet it was on. By using the difference between the seed's position and the planets, we could get the angle by using the arctangent.
+
+                        The height of the tree was also fairly straightforward, as each segment had a particular height, and each tree had a trunk and segments equal to the last tree's segment count plus two. 
+
+                        The initial position can be calculated based on the angle and height (which is our magnitude). All we need to do is make sure the tree is hidden from the player's view while it's coming up, and to make sure it goes up to its full height. So we multiply the height by negative 1 and combine it with the angle to find its starting position, and from there we can animate it to come "up" from the planet. Our setup was as follows
+                        `
+                    },
+                    {type: "img", content: belongTreeCreator},
+                    {type: "text", content: `
+                        There's a lot about the way we wrote this that I would rewrite today, given what I now know. One major thing would be to replace all of the numbers like "3.0f" with variables declaring what they are. That's probably the height of the trunk, given the context, but it's been years since I've looked at this code, and that indicates an issue with readability. Doubly so since the functionality should be pretty simple.
+                        
+                        However, the math worked and this did what we needed it to for the purposes of our game jam. Especially in a jam that short, there's always going to be some amount of "spit and duct tape" code holding it all together.
+
+                        Oh, and in case you were wondering. Birds eating seeds, flying around, and expelling them is a major part of how trees get fertilized and spread around in our world. Miranda, our character artist, was also our resident bird expert. 
+                        `
+                    }
                 ]
             },
             {
                 title: "Credits",
-                contents: [
+                contents: [{
+                    type: "text",
+                    content: `Anton Pleshakov - Programmer,
 
-                ]
+                        Miranda Jacoby - Character Artist,
+
+                        Jingyu Sui - Environment Art, Sound Engineer
+
+                        Oliver Hong - Programmer
+
+                        Davis Allen - Programmer
+
+                        Peter Hechler - Programmer
+                    `
+                }]
             }
         ]
     }

@@ -54,13 +54,13 @@ function ProjectDetailViz({ projectData } : {projectData: DetailProjectData}) {
             );
         });
         return (
-            <Accordion  key={subsection.title + projectData.projectTitle} className="project-accordion" slotProps={{transition: {timeout: 250}}}>
+            <Accordion defaultExpanded={idx === 0} key={subsection.title + projectData.projectTitle} className="project-accordion" slotProps={{transition: {timeout: 250}}}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon className="project-accordion-expander" />}
                     aria-controls="panel2-content"
                     id="panel2-header"
                     >
-                    {subsection.title}
+                    <DetailTitle content={subsection.title} openModal={openModal} />
                 </AccordionSummary>
                 <AccordionDetails>
                     {subsectionContents}
@@ -107,15 +107,26 @@ function createLinkSentence(name: string, textLinks: TextLinkBlock) {
     return (
         <span key={name}>
             {links.map(link => {
-                console.log(link.href);
-                return (
-                    <Button component={Link} key={link.href} href={link.href} target={"_blank"} title={link.label} style={{minWidth: "24px"}}>
-                        {link.icon ? (link.iconType === "img" ? (
-                            <img className="credited-social-icon" src={link.icon} />
-                        ) : (<link.icon className="credited-social-icon" />)) : link.label}
-                    </Button>
-                );
-            })}
+                let contents;
+                if (!link.icon) {
+                    contents = <Typography>{link.label}</Typography>;
+                } else {
+                    switch (link.iconType) {
+                        case "img":
+                            contents = <img className="credited-social-icon" src={link.icon} />;
+                            break;
+                        case "svg":
+                            contents = <link.icon className="credited-social-icon" />;
+                            break;
+                        case "mui":
+                            contents = <link.icon className="credited-social-icon" />;
+                            break;
+                    }
+                }
+                return (<Button component={Link} key={link.href} href={link.href} target={"_blank"} title={link.label} style={{minWidth: "24px"}}>
+                    {contents}
+                </Button>);
+}               )}
         </span>
     );
 }
@@ -190,7 +201,7 @@ function DetailLinks({content} : ActionBlockLinkProps) {
     const renderableLinks = content.map((link, index) => {
         const { label, url, note = "", disabled = false} = link;
         return (
-            <Box sx={{ margin: "0 10px", lineHeight: "3em" }} key={index + "-" + label}>
+            <Box sx={{ margin: "0 10px" }} key={index + "-" + label}>
                 <Button variant="contained" className="button-link" component={Link} href={url} target={"_blank"} sx={{width: "150px"}} disabled={disabled}>
                     {label}
                 </Button>
@@ -203,7 +214,7 @@ function DetailLinks({content} : ActionBlockLinkProps) {
         );
     })
     return (
-        <Box sx={{display: "flex", margin: "20px auto 0 auto", flexWrap: "wrap", justifyContent: "center"}}>
+        <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
             {renderableLinks}
         </Box>
     )

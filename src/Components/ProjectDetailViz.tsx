@@ -1,8 +1,7 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, CardMedia, Collapse, Link, Modal, SvgIcon, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, CardMedia, Link, Modal, Typography } from "@mui/material";
 import { DetailProjectData, LinksData, TextLinkBlock } from "./DetailProjectTile";
 import { ReactElement, useCallback, useState } from "react";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import * as React from "react";
 
 const TYPE_TO_COMPONENT: {
     [key: string]: 

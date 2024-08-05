@@ -1,6 +1,6 @@
-import { Box, Button, CardMedia, Link, SvgIconTypeMap, Typography } from "@mui/material";
+import { Box, CardMedia, SvgIconTypeMap, Typography } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { ElementType, FunctionComponent, ReactElement, SVGProps, SyntheticEvent } from "react";
+import { FunctionComponent, SVGProps, SyntheticEvent } from "react";
 
 export type DetailTileProps = {
     projectData: DetailProjectData;

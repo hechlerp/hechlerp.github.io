@@ -5,14 +5,14 @@ import Games from "../Pages/GamesV2";
 
 export const routes = [
     {
-        route: "about",
-        displayName: "About Me",
-        component: <About />
-    },
-    {
         route: "games",
         displayName: "Games",
         component: <Games />
+    },
+    {
+        route: "about",
+        displayName: "About Me",
+        component: <About />
     },
     {
         route: "articles",

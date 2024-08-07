@@ -11,7 +11,6 @@ const TYPE_TO_COMPONENT: {
         img: DetailImage,
         projectTitle: DetailProjectTitle,
         subsectionTitle: DetailSubsectionTitle,
-        title: DetailTitle,
         video: DetailVideo
     };
 
@@ -38,9 +37,9 @@ function ProjectDetailViz({ projectData } : {projectData: DetailProjectData}) {
 
     const projectTitle = <DetailProjectTitle content={projectData.projectTitle} />;
     const projectHeaderMedia = projectData.projectHeaderMediaType === "video" ? (
-        <DetailVideo content={projectData.projectHeaderMedia} openModal={openModal} /> 
+        <DetailHeaderVideo content={projectData.projectHeaderMedia} openModal={openModal} /> 
     ) : ( 
-        <DetailImage content={projectData.projectHeaderMedia} openModal={openModal} />
+        <DetailHeaderImage content={projectData.projectHeaderMedia} openModal={openModal} />
     );
     const projectLinks = <DetailLinks content={projectData.projectLinks} />;
     const projectSubsections = projectData.subsections.map((subsection, idx: number) => {
@@ -77,7 +76,7 @@ function ProjectDetailViz({ projectData } : {projectData: DetailProjectData}) {
                 {projectTitle}
             </Box>
             
-            <Box className="project-block-container">
+            <Box className="project-block-container project-link-container">
                 {projectLinks}
             </Box>
             
@@ -163,6 +162,17 @@ function DetailImage({content, openModal} : ActionBlockProps) {
     );
 }
 
+function DetailHeaderImage({content, openModal} : ActionBlockProps) {
+    const openModalImage = useCallback(() => {
+        openModal(content);
+    }, [openModal, content]);
+    return (
+        <Box className="project-image-block project-header-image-block bordered-media" onClick={openModalImage}>
+            <img src={content} className="project-image" />
+        </Box>
+    );
+}
+
 function DetailTitle({content} : ActionBlockProps) {
     return (
         <Typography variant="h5" sx={{fontStyle: "italic"}}>
@@ -196,11 +206,19 @@ function DetailVideo({content} : ActionBlockProps) {
     );
 }
 
+function DetailHeaderVideo({content} : ActionBlockProps) {
+    return (
+        <Box className="project-image-block project-header-image-block">
+            <CardMedia image={content} className="tile-media bordered-media" component="iframe" />
+        </Box>
+    );
+}
+
 function DetailLinks({content} : ActionBlockLinkProps) {
     const renderableLinks = content.map((link, index) => {
         const { label, url, note = "", disabled = false} = link;
         return (
-            <Box sx={{ margin: "0 10px" }} key={index + "-" + label}>
+            <Box sx={{ margin: "10px 10px 0 10px" }} key={index + "-" + label}>
                 <Button variant="contained" className="button-link" component={Link} href={url} target={"_blank"} sx={{width: "150px"}} disabled={disabled}>
                     {label}
                 </Button>

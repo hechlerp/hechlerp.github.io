@@ -16,7 +16,7 @@ import editorTriggers from "../../assets/editor-triggers.png";
 import attackUtility from "../../assets/attackUtility.png";
 import rocketArcIMotion from "../../assets/rocketArcIMotion.png";
 import rocketMotion from "../../assets/rocketMotion.png";
-import shroudedCityMist from "../../assets/shroudedCityEnd.png";
+import shroudedCityMist from "../../assets/shroudedCityMist.png";
 import shroudedCityComposition from "../../assets/shroudedCityBehaviors.png"
 import shroudedCityWalls from "../../assets/shroudedCityWalls.png"
 import shroudedCityRendering from "../../assets/shroudedCityRendering.png"
@@ -55,13 +55,32 @@ const gameTileData: DetailProjectData[] = [
         projectLinks:  [
             { label: 'Demo (Itch.io)', url: 'https://johaggis.itch.io/planar-peril-demo' }
         ],
+        projectType: "Personal Project",
         subsections: [
             {
-                title: "Overview",
+                title: "Role Overview",
                 contents: [
-                    {type: "text", content: `An in-progress RTS game. The project is mostly solo-developed as a passion project, with a few friends helping with some art and UI work. 
-                        
-                        In the current demo build, there are two playable scenarios: the tutorial and the wave defense mode. Gather resources, build a base, and fight off the increasingly dangerous waves of enemies in this war of alternate versions of Earth.
+                    {
+                        type: "text",
+                        content: 
+                            `An in-progress RTS game passion project, built with Unity and C#. 
+                            
+                            As the sole programmer, I created the entire codebase. This includes game systems, UI engineering, unit and player AI, and shader logic. If you're curious, check out the feature deep dives in the "Technical Details" section.
+
+                            I'm also responsible for the design of all gameplay systems, missions, faction balance, player AI, the world and factions themselves, and some of the UX patterns. I've maintained a GDD, as well as a style guide, balancing spreadsheets, and profiles on every unit. I've also relentlessly playtested the game and gathered feedback to help inform my design work.
+
+                            As with any mostly-solo project, I've also integrated assets, built placeholder models in blender, and done some light VFX work.
+
+                            The project is largely solo-developed as a passion project. A few friends have helped with some art and UI work.
+                            `
+                    }
+                ]
+            },
+            {
+                title: "Game Info",
+                contents: [
+                    {type: "text", content: 
+                        `In the current demo build, there are two playable scenarios: the tutorial and the wave defense mode. Gather resources, build a base, and fight off the increasingly dangerous waves of enemies in this war of alternate versions of Earth.
         
                         Play as either the zealous Benedictum, a fantastical version of the Eastern Roman Empire c. 400 BCE, or the Free State, a Cyberpunk city-state ruled by Megacorporations and the insatiable thirst for progress.
                                     
@@ -236,16 +255,29 @@ const gameTileData: DetailProjectData[] = [
             { label: 'Itch.io', url: "https://terminalvector.itch.io/scarlet-unseen-world"},
             { label: 'Just Play Jam', url: "https://www.justplayjam.com/"}
         ],
+        projectType: "Game Jam Project",
         subsections: [
+            { title: "Role Overview", contents: 
+                [{
+                    type: "text",
+                    content: 
+                    `Scarlet O'Beetle game jam project built with Unity/C#.
+
+                    I worked as a programmer on the game. The major aspects of the game I worked on were creating a data-driven dialogue system, a modular quest system, and adding visual feedback for player actions.
+
+                    Additionally, as one of the more seasoned Unity developers on the team, I taught teammates Unity best practices and showed them how to integrate a data layer into a Unity project effectively.
+                        
+                    The game was created with a 10-person team, consisting of teammates from all over the globe, collaborating over the course of around 14 days. After the initial 14-day period, our game was selected as a finalist. We then had a period to refine the game, fix bugs (no pun intended), and to make the game more presentable. Overall, we worked on the game over the course of about a month.
+                    `
+                }]
+            },
             {
-                title: "Overview",
+                title: "Game Info",
                 contents: [
                     {type: "text", content: 
                         `A classic adventure point-and-click, story-rich puzzle game set in the fascinating world of insects. While interacting with the characters and learning about their lives, the player will learn exciting scientific facts about the species they encounter and the anthropic impact of climate change and pollution.
         
                         Scarlet O'Beetle was created as part of the 2024 Just Play Jam, a game jam focused on environmentalism and socially conscious games. We are proud to have been finalists in the jam, and to contribute to environmental awareness in what small way we can.
-                        
-                        The game was created with a 10-person team, consisting of teammates from all over the globe, collaborating over the course of around 14 days. After the initial 14-day period, our game was selected as a finalist. We then had a period to refine the game, fix bugs (no pun intended), and to make the game more presentable. Overall, we worked on the game over the course of about a month.
                         `
                     }
                 ]
@@ -407,16 +439,32 @@ const gameTileData: DetailProjectData[] = [
             { label: 'Github', url: 'https://github.com/hechlerp/ShroudedCity' },
             { label: 'Live', url: 'http://hechlerp.github.io/ShroudedCity/' }
         ],
+        projectType: "Personal Project",
         projectHeaderMedia: shroudedCityMist,
         projectHeaderMediaType: "img",
         subsections: [
             {
-                title: "Overview",
+                title: "Role Overview",
+                contents: [
+                    {type: "text", content:
+                        `A dungeon crawler built with JavaScript and the pixi.js rendering library as a personal project.
+                        
+                        Like with Planar Peril, this game is mostly solo developed. 
+
+                        I built this project without an engine, partly as a way to test how far I could take my JavaScript abilities back in 2016. This was shortly after I completed my web development course at App Academy, and served as a great learning experience. I coded a collision system, a player controller, simple enemy AI, and all core game systems.
+
+                        I handled every aspect of design in the game as well.
+
+                        A friend did about half of the environment art, as well as art and animations for two of the enemy types. The rest of the (much worse) art was done by me.
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Game Info",
                 contents: [
                     {type: "text", content: 
-                        `A 2D dungeon crawler built with JavaScript. Navigate the rooms of the occult and reach the cliffs at the end.
-        
-                        One of the first games I built after completing my web development course at App Academy in 2016.
+                        `A 2D dungeon crawler where you must fight your way through cultists and occult abominations to find a way out of the city. Navigate the increasingly dangerous rooms and reach the cliffs at the end.
                         `
                     },
                 ]
@@ -495,22 +543,31 @@ const gameTileData: DetailProjectData[] = [
             { label: 'GGJ Website', url: 'https://globalgamejam.org/games/2024/rat-burglar-4' },
             { label: 'Itch.io', url: 'https://johaggis.itch.io/rat-burglar' }
         ],
+        projectType: "Game Jam Project",
         subsections: [
             {
-                title: "Overview",
+                title: "Role Overview",
                 contents: [
                     {type: "text", content: 
-                        `
-                        Created with a 5-person team for Global Game Jam 2024.
-        
-                        Traverse a New York subway station as one of two rats in this local co-op game. In honor of Pizza Rat, your quest is to grab the pizza and drag it from the first platform to your hole. Be careful of subways and people, as they have no respect for Ratkind and will flatten you. Squeak at the subway passengers to make them run away in panic!
+                        `Built with Unity/C# for the 2024 Global Game Jam.
+
+                        I worked as the Lead Programmer on the team. I created player controllers, enemy logic, and environmental hazard behavior. I also mentored the more junior devs, teaching them version control, some Unity best practices, and a few code design patterns.
+                        
+                        Created with a 5-person team. Like other Global Game Jam games, it was created over the course of 48 hours with teammates who I had never met before starting the jam.
+                    `}
+                ]
+            },
+            {
+                title: "Game Info",
+                contents: [
+                    { type: "text", content:
+                        `Traverse a New York subway station as one of two rats in this local co-op game. In honor of Pizza Rat, your quest is to grab the pizza and drag it from the first platform to your hole. Be careful of subways and people, as they have no respect for Ratkind and will flatten you. Squeak at the subway passengers to make them run away in panic!
         
                         May your heist go off without a hitch!
 
                         The game was inspired by the famous Pizza Rat of the New York subway system.
-
-                        Like other Global Game Jam games, it was created over the course of 48 hours with teammates who I had never met before starting the jam.
-                    `}
+                        `
+                    }
                 ]
             },
             {
@@ -620,7 +677,7 @@ const gameTileData: DetailProjectData[] = [
     {
         tileMedia: {
             title: "The Necrofixer",
-            headerMedia: { src: "https://img.itch.zone/aW1hZ2UvNTYxNjA1LzI5NTE4MzIuanBn/original/D0suYE.jpg" }
+            headerMedia: { src: "https://img.itch.zone/aW1nLzI5NTE4MTMuanBn/315x250%23c/E0TmVi.jpg" }
         },
         description: `Created with a team for Global Game Jam 2020.
 
@@ -634,21 +691,33 @@ const gameTileData: DetailProjectData[] = [
             However, if you make too many mistakes you'll get bad ratings and your business might go under!.
             `,
         projectTitle: "The Necrofixer",
-        projectHeaderMedia: "https://img.itch.zone/aW1nLzI5NTE4MTMuanBn/315x250%23c/E0TmVi.jpg",
+        projectHeaderMedia: "https://img.itch.zone/aW1hZ2UvNTYxNjA1LzI5NTE4MzIuanBn/original/D0suYE.jpg",
         projectHeaderMediaType: "img",
         projectLinks: [
             { label: 'Github', url: 'https://github.com/hechlerp/necrofixer' },
             { label: 'GGJ Website', url: 'https://globalgamejam.org/2020/games/necrofixer-familiar-fixerupper-extraordinaire-zuesly-tangwystl-phd-8' },
             { label: 'Itch.io', url: 'https://charlieartifact.itch.io/the-necrofixer' }
         ],
+        projectType: "Game Jam Project",
         subsections: [
-            {
-                title: "Overview",
+            { 
+                title: "Role Overview",
                 contents: [
                     {type: "text", content: 
-                        `Created with an 9-person team for Global Game Jam 2020.
+                        `A point-and-click game built with Unity/C# for Global Game Jam 2020.
 
-                        Following the theme of repair, our team set about to build a game centered around a humble business owner: Zeusly Tangwystl Phd, The Necrofixer!
+                        My role on this team was Lead Programmer. I coded many of the major systems, including the timer, body-part swapping logic, and scoring, and also coordinated the other programmers, dividing up tasks to prioritize crucial game elements. We even managed to get to a few stretch goals, including the scoring screens, the intro sequence, and the 4th customer, with a basic dialogue system.
+
+                        The Necrofixer was built with a 9-person team. Like other Global Game Jam projects I've been a part of, I knew none of my teammates before the jam.
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Game Info",
+                contents: [
+                    {type: "text", content: 
+                        `Following the theme of repair, our team set about to build a game centered around a humble business owner: Zeusly Tangwystl Phd, The Necrofixer!
         
                         Want a cuter cat? visit the Necrofixer!
                         Want a familiar that strikes fear into your enemies? Dr. Tangwystl can supply you with what you need!
@@ -764,14 +833,28 @@ const gameTileData: DetailProjectData[] = [
             { label: 'GGJ Website', url: 'https://v3.globalgamejam.org/2018/games/belong', note: 'PC version available for download' },
             { label: 'Live', url: 'http://hechlerp.github.io/belong-web/', note: 'Runs best on Chrome' }
         ],
+        projectType: "Game Jam Project",
         subsections: [
             {
-                title: "Overview",
+                title: "Role Overview",
+                contents: [
+                    {
+                        type: "text",
+                        content:
+                        `A platforming game built with Unity/C# for Global Game Jam 2018.
+
+                        I did Programming for this project. As one of four programmers, I was able to focus on getting a few denser features working, rather than working on a large set of tasks. I wrote much of the code concering trees, their creation and platforming logic.
+
+                        Created with a 6-person team. Like with the other Global Game Jam projects I've been a part of, I knew none of my teammates beforehand.
+                        `
+                    }
+                ]
+            },
+            {
+                title: "Game Info",
                 contents: [
                     {type: "text", content: 
-                        `Created with a 6-person team for Global Game Jam 2018.
-
-                        Following the jam's theme of "home", we created a game about a bird finding its way across the stars back to its flock.
+                        `Following the jam's theme of "home", we created a game about a bird finding its way across the stars back to its flock.
 
                         Eat seeds and poop trees to traverse planets and reach your flock. The Chinese word in the logo, 歸途 (guī tu) means: the way back, one's journey home.`
                     }

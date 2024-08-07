@@ -8,6 +8,7 @@ import ProjectDetailViz from "../Components/ProjectDetailViz";
 function Games() {
 
     const [currentTab, updateTab] = useState(-1);
+    const isTouchScreen = navigator.maxTouchPoints > 0;
     const tiles = gameTileData.map((tile, index) => {
         const selectionCallback = useCallback(() => {
             if (index !== currentTab) {
@@ -16,7 +17,7 @@ function Games() {
         }, [currentTab, updateTab]);
         return (
             <Grid item xs="auto" md="auto" key={index}>
-                <DetailProjectTile projectData={{...tile}} onSelect={selectionCallback} />
+                <DetailProjectTile projectData={{...tile}} onSelect={selectionCallback} isSelected={currentTab == index} isTouchScreen={isTouchScreen} />
             </Grid>
         );
     });
@@ -25,7 +26,7 @@ function Games() {
         if (currentTab >= 0) {
             document.getElementById("projectDetailContainer")?.scrollIntoView({behavior: "smooth"});
         }
-    }, [currentTab])
+    }, [currentTab]);
     return (
         <Container>
             <Box>

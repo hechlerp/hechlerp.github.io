@@ -26,7 +26,7 @@ const DarkModeSwitch = styled(Switch)(() => ({
 
 
 const appBase = "/";
-const defaultPage = "/about";
+const defaultPage = "/games";
 
 function setInitialDarkModeState() {
     const localStorageColorScheme = localStorage.getItem("colorScheme");

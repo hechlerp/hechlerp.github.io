@@ -1,7 +1,26 @@
 import { Box, Container, Typography } from "@mui/material";
 import ProjectTile, { ArticleTileProps } from "../Components/ArticleTile";
+import xcomSS from "../assets/xcom shot.png";
 
 const gameTileData: ArticleTileProps[] = [
+    {
+        title: "RTS Discourse is a Disaster",
+        headerMedia: { src: xcomSS, type: "image", name: "articleHeader" },
+        description: `If you’ve spent any amount of time around competitive gamers, you’ve heard people complain about 
+        “RNG”, short for Random Number Generation. Maybe you’ve heard “This game is all RNG, there's no skill.” 
+
+        These discussions suck. And it's not because the people involved are arguing in bad faith...`,
+        articleURL: 'https://waywardstrategy.com/2025/03/03/rng-discourse-is-a-disaster/'
+    },
+    {
+        title: "Of Archers and Artillery: Range Dynamics in RTS",
+        headerMedia: { src: "https://bccasteel.files.wordpress.com/2024/01/trebuchet.jpg", type: "image", name: "articleHeader" },
+        description: `If you’ve ever played Age of Empires 2, you know how deeply satisfying it is to use the Trebuchet…
+        the firing sound, the arcing rock/fireball about to lay waste to your opponent’s castle. That moment of dread 
+        your opponent must feel as they see your siege weapons unpacking just outside of where their castle can 
+        fight back. And their panic as they send out a wave of cavalry to hopefully end your assault...`,
+        articleURL: 'https://waywardstrategy.com/2024/03/12/of-archers-and-artillery-range-dynamics-in-rts/'
+    },
     {
         title: "Fixing Stealth in RTS",
         headerMedia: { src: "https://bccasteel.files.wordpress.com/2023/06/6001862.jpg", type: "image", name: "articleHeader" },
@@ -11,16 +30,8 @@ const gameTileData: ArticleTileProps[] = [
             games have done it, and the key components of a good stealth system...
             `,
         articleURL: 'https://waywardstrategy.com/2023/06/26/fixing-stealth-in-rts/'
-    },
-    {
-        title: "Of Archers and Artillery: Range Dynamics in RTS",
-        headerMedia: { src: "https://bccasteel.files.wordpress.com/2024/01/trebuchet.jpg", type: "image", name: "articleHeader" },
-        description: `If you’ve ever played Age of Empires 2, you know how deeply satisfying it is to use the Trebuchet…
-         the firing sound, the arcing rock/fireball about to lay waste to your opponent’s castle. That moment of dread 
-         your opponent must feel as they see your siege weapons unpacking just outside of where their castle can 
-         fight back. And their panic as they send out a wave of cavalry to hopefully end your assault...`,
-         articleURL: 'https://waywardstrategy.com/2024/03/12/of-archers-and-artillery-range-dynamics-in-rts/'
     }
+
 ]
 
 function Articles() {

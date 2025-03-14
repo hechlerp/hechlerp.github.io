@@ -32,6 +32,14 @@ import scarletDialogue from "../../assets/scarletDialogue.png";
 import necrofixerAbomination from "../../assets/necrofixerAbomination.png";
 import belongTrees from "../../assets/belongTrees.png";
 import belongTreeCreator from "../../assets/belongTreeCreationScript.png";
+import terminationVelocityTile from "../../assets/terminationVelocityTile.png";
+import terminationVelocityStill from "../../assets/terminationVelocityStill.jpg";
+import blankSplines from "../../assets/blankSplines.png";
+import fullTrack from "../../assets/fullTrack.png";
+import spawnedCheckpoint from "../../assets/spawnedCheckpoint.png";
+import splineEditorTool from "../../assets/splineEditorTool.png";
+import bankedTurn from "../../assets/bankedTurn.gif";
+import shortcutJump from "../../assets/shortcutJump.gif";
 import BandcampIcon from "../../assets/Bandcamp-button-circle-black.svg?react";
 import ItchIcon from "../../assets/itchio-textless-black.svg?react";
 
@@ -231,6 +239,127 @@ const gameTileData: DetailProjectData[] = [
                         Jon Lai - Concept Artist
         
                         Special thanks to Dylan McNair, Gautham Varadarajan, and Michael Wang
+                        `
+                    }
+                ]
+            },
+            
+        ],
+    },
+    {
+        tileMedia: {
+            title: "Termination Velocity",
+            headerMedia: { src: terminationVelocityTile }
+        },
+        description: `
+            A racing game prototype made with Unreal Engine 5/C++/Blueprints. This project is still in the prototyping phase, and so far features a single racer on a simple track, with basic movement, drifting, and barebones multiplayer.
+            `,
+        projectHeaderMedia: bankedTurn,
+        projectHeaderMediaType: "img",
+        projectTitle: "Termination Velocity",
+        projectLinks:  [
+            { label: 'Demo (coming soon)', url: 'https://johaggis.itch.io/planar-peril-demo', disabled: true }
+        ],
+        projectType: "Personal Project",
+        subsections: [
+            {
+                title: "Role Overview",
+                contents: [
+                    {
+                        type: "text",
+                        content: 
+                            `Termination Velocity is an in-progress multiplayer racing game, built with Unreal Engine 5 (C++).
+
+                            This is a solo project, so I am responsible for all of the coding and custom assets you see in the game. Most of what's in the game so far is on the programming side, so the Technical Details section below will cover coding. If I find that early builds of the game garner significant interest, I'm open to a commercial release, but I'm building this game primarily as a way to learn Unreal Engine.
+                            `
+                    }
+                ]
+            },
+            {
+                title: "Game Info",
+                contents: [
+                    {type: "text", content: 
+                        `Termination Velocity is a sci-fi racing game inspired by titles such as Kart racers, the Sonic racing games, and Star Wars: Episode I Racer. Players select from a roster of racers and compete to get through the course the fastest. Current plans include dynamic courses and weaponry for players. It's set in the same world as Planar Peril, specifically in the dimension of The Free State.
+                        `
+                    },
+                ]
+            },
+            {
+                title: "Technical Details",
+                contents: [
+                    {type: "text", content: 
+                        `Termination Velocity is built with Unreal 5, using a combination of C++ and Blueprints.
+        
+                        As a project based on learning as much as I can about Unreal 5, I've thus far focused on creating 
+                        
+                        - A character controller for the racer
+                        - Scalable track creation tools
+        
+        
+                        As the character controller is the most essential to a racing game, we'll start there.
+                        `
+                    },
+                    
+                    {type: "subsectionTitle", content: "Hovercraft Character Controller"},
+                    {type: "img", content: terminationVelocityStill},
+                    {type: "text", content:
+                        `A large part of creating this controller was determining which parts of standard vehicle physics I wanted. I initially created this project from Unreal's vehicle template, largely to see how their vehicles moved and to understand which parts are important. However, as Termination Velocity features hovercrafts instead of cars, I decided to move away from much of the chaos vehicle functionality. The biggest components I discarded were wheels, friction, and gears. Because my hovercrafts are unrealistically maneuverable and don't have concepts of gears, it didn't make sense to rely on a system I couldn't easily tweak to my needs. I kept many of the control patterns and modeled my input layer on theirs. In testing, players have understood controls intuitively.
+                        
+                        My first challenge was to allow the player to steer the vehicle. Without friction, however, simply adding torque to my hovercraft didn't counteract current velocity, and made the hovercrafts extremely difficult to maneuver. To remedy this, I created what I call a "traction function". This function applies two forces of equal magnitude: one in the opposite direction of current velocity, and one in the direction the player is facing. With the magnitude large enough, the force will allow the player to turn.
+                        `
+                    },
+                    {type: "img", content: shortcutJump},
+                    {type: "text", content: 
+                        `However, not having friction caused another issue: players had no effective cap on their speed and wouldn't slow down when releasing the throttle. I implemented a two-part solution- an acceleration curve and a soft cap through a form of linear drag. The acceleration curve made players accelerate dramatically faster at lower speeds and normally once they reach a baseline. This prevents an exceedingly long ramp-up whenever you stop, but the acceleration stabilizes afterwards. And rather than enforcing a hard limit on speed, I added a force counter to the player's velocity that becomes stronger the faster the player is going. Using the player's current speed and dividing it by itself and a flat value, I create a number that approaches one, but never reaches it. I can then get the magnitude of the soft cap force by multiplying this number by the current speed, and get a force that scales with player speed, but never exceeds it. It also makes the player lose speed more dramatically when they stop accelerating at high speeds.
+
+                        The biggest challenge arrived when I wanted to make acceleration, braking, steering, traction, and drag all work with a track that isn't flat. In order to go up a hill, I needed the hovercraft to work with plane of reference. So far, these forces all ignored the motion along the vertical axis, but that's a problem when the forward axis is partly vertical. To address this, I needed to find the upward axis of the ground, also known as its normal. The simplest way to do so was to use a line trace (or raycast, in other engines) straight down from the hovercraft and grab the normal of the location the trace hit. This, however, had issues when the player wasn't on completely level ground, and some of the corners should reflect that. Instead I used traces from four points on the vehicle, and using the points where they hit the ground, took the cross product of two of those vectors to find the normal. With a bit of math to get the angle between the normal and the hovercraft's current upward vector, I'm able to stabilize the hovercraft. 
+                        
+                        The ground normal also gave me an axis to use for finding the lateral axes. Rather than doing more complex math to determine the ground speed, I simply created a transform with the ground normal as its upward axis. I could then use Unreal's transform functions to convert vectors to that local space, remove the local Z component, and transform it back to worldspace. By constraining the calculations for the other forces along these axes, I was able to make movement consistent at almost any angle.
+                        `
+                    },
+                    {type: "subsectionTitle", content: "Scalable Track Creation"},
+                    {type: "img", content: blankSplines},
+                    {type: "text", content: 
+                        `
+                        One of the other major challenges I've faced is making good track creation tools. There's plenty of room for my tools to become more robust, but their most basic requirements were
+
+                            - Rapid prototyping
+                            - Adjustability
+                            - Modularity
+
+                        Rapid prototyping is important to get a feel for my movement mechanics on a simple course. I'd like to avoid locking in course design before I've got sufficient feedback that the movement itself feels good, as my course design depends on my movement. I kept my course design relatively simple, and made sure that I wasn't spending hours meticulously adjusting every hill and turn.
+
+                        Adjustability was key for making sure that any part of the course I wanted to test individually could be modified on the fly. Especially as I'm prototyping, the course is constantly going to be changing, and modifying a turn's sharpness has to be easy. Building a course entirely out of even primitive blocks would make this incredibly time-consuming.
+                        
+                        And finally, modularity in my designs helps me to separate out individual systems and test them as needed. Like in programming, keeping concerns separate means that adjusting one part does not cascade changes unintentionally. If I'm adjusting my checkpoint/respawn behavior, it won't affect the course itself. A complex, intertwined system makes any kind of iteration harder.
+                        
+                        To start, I took a look at Unreal Engine's built-in tools. I tried to see how far I could go with the landscaping system, but even with landscape splines, it often lead to uneven terrain, and the splines themselves were a bit harder to isolate than I'd like. The borders of the valleys I created often looked choppy, and increasing the terrain subdivisions further makes them even less performant. But as I understand it, this isn't the best use-case for the landscape tool, as I'm not really trying to make more than a set of tracks for the player.
+
+                        However, in experimenting with the landscaping tools, I did start to learn more about splines, and I ended up using Unreal's built-in spline and spline mesh to create my tools. Not only can I use spline meshes for the track itself, but it's easy to then add supplementary actors, like the checkpoints, along a given spline. Now with just two simple splines, I can create an entire demo track.
+                        
+                        Given that I only need a spline or two to make a full track, the rapid prototyping is taken care of. The splines themselves are very easy to adjust, and by introducing tools to add actors and components based on a spline reference, my individual parts stay fully modular. My most basic goals for these tools are met.
+                        
+                        Pictured below is a checkpoint collision box that I've dynamically added along the course to track player progress and respawn them should they fall off.
+                        `
+                    },
+                    {type: "img", content: spawnedCheckpoint},
+                    {type: "text", content: 
+                        `I created blueprints with editor functionality to create these actors and components. I exposed a few parameters to have control over things like how offset a wall is from the center of the track, which spline points it covers, and what kind of mesh to generate. This allows me to non-destructively add and remove meshes to a spline, and allows me to easily update them when I adjust the spline control points.
+                        
+                        Below are the parameters and the full track, created using those tools. Currently, I have hills, valleys, banked turns, jumps, alternate routes, and different walls on the track, and I'm excited about all of the extra features I can add later.
+                        `
+                    },
+                    {type: "img", content: splineEditorTool},
+                    {type: "img", content: fullTrack},
+                ]
+            },
+            {
+                title: "Credits",
+                contents: [
+                    {type: "text", content: 
+                        `Peter Hechler - Creator, Programmer, Game Designer
+        
+                        Special thanks to Gautham Varadarajan, and The Gumbo Collective
                         `
                     }
                 ]

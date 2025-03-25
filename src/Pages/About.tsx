@@ -34,7 +34,7 @@ function About() {
                     You can find the games I've made here on my site, on the <Link href="/games" onClick={handleLinkNav}>Games page</Link>. They include my personal projects and a few choice games I worked on as part of game jams.
                     <br />
                     <br />
-                    If you're looking for my resume/cv, click <Link target="_blank" sx={{ padding: "0" }} href="https://drive.google.com/file/d/1YTYMTr0x_aA5WK7r7LyJDLih7_9QZcwy/view?usp=sharing">here</Link> or on the page icon in the footer.
+                    If you're looking for my resume/cv, click <Link target="_blank" sx={{ padding: "0" }} href="https://drive.google.com/file/d/1IFvBqoFKFUpzLxh-QlmnDAArFzcdm2xE/view?usp=sharing">here</Link> or on the page icon in the footer.
                     <br />
                     <br />
                     If you have any other questions or want to get in contact, feel free to reach out to me at

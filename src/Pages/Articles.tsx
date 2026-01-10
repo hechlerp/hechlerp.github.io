@@ -4,7 +4,7 @@ import xcomSS from "../assets/xcom shot.png";
 
 const gameTileData: ArticleTileProps[] = [
     {
-        title: "RTS Discourse is a Disaster",
+        title: "RNG Discourse is a Disaster",
         headerMedia: { src: xcomSS, type: "image", name: "articleHeader" },
         description: `If you’ve spent any amount of time around competitive gamers, you’ve heard people complain about 
         “RNG”, short for Random Number Generation. Maybe you’ve heard “This game is all RNG, there's no skill.” 

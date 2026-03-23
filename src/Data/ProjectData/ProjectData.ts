@@ -1,5 +1,4 @@
-import LinkedIn from "@mui/icons-material/LinkedIn";
-import { Instagram, Language } from "@mui/icons-material";
+import { Instagram, Language, LinkedIn } from "@mui/icons-material";
 import { DetailProjectData } from "../../Components/DetailProjectTile";
 import bulwarkRocketsGif from "../../assets/bulwark rockets.gif";
 import sniperAIGif from "../../assets/sniper ai.gif";

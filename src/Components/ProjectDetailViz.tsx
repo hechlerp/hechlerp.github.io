@@ -1,7 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, CardMedia, Link, Modal, Typography } from "@mui/material";
 import { DetailProjectData, LinksData, TextLinkBlock } from "./DetailProjectTile";
 import { ReactElement, useCallback, useState } from "react";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ExpandMore } from '@mui/icons-material';
 
 const TYPE_TO_COMPONENT: {
     [key: string]: 
@@ -54,7 +54,7 @@ function ProjectDetailViz({ projectData } : {projectData: DetailProjectData}) {
         return (
             <Accordion defaultExpanded={idx === 0} key={subsection.title + projectData.projectTitle} className="project-accordion" slotProps={{transition: {timeout: 250}}}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className="project-accordion-expander" />}
+                    expandIcon={<ExpandMore className="project-accordion-expander" />}
                     aria-controls="panel2-content"
                     id="panel2-header"
                     >

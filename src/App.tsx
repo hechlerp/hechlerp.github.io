@@ -1,6 +1,6 @@
 import { SyntheticEvent, useCallback, useMemo, useRef, useState } from 'react';
 import { FormControlLabel, IconButton, MenuItem } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';

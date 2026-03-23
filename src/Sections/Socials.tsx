@@ -1,35 +1,31 @@
 import { Box } from "@mui/material";
 import SocialButton, { SocialButtonProps } from "../Components/SocialButton";
-import TwitterIcon from '@mui/icons-material/Twitter';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import EmailIcon from '@mui/icons-material/Email';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import DescriptionIcon from '@mui/icons-material/Description';
+import { Twitter, GitHub, Email, LinkedIn, Description } from "@mui/icons-material";
 
 
 const socialsData: SocialButtonProps[] = [
     {
-        icon: <DescriptionIcon />,
+        icon: <Description />,
         label: "Resume",
         href: "https://drive.google.com/file/d/1IFvBqoFKFUpzLxh-QlmnDAArFzcdm2xE/view?usp=sharing"
     },
     {
-        icon: <LinkedInIcon />,
+        icon: <LinkedIn />,
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/peter-hechler-ab4238b4"
     },
     {
-        icon: <TwitterIcon />,
+        icon: <Twitter />,
         label: "Twitter",
         href: "https://twitter.com/ItsNotJohaggis"
     },
     {
-        icon: <GitHubIcon />,
+        icon: <GitHub />,
         label: "Github",
         href: "https://github.com/hechlerp"
     },
     {
-        icon: <EmailIcon />,
+        icon: <Email />,
         label: "Email",
         href: "mailto:peter.hechler@gmail.com"
     },
